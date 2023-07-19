@@ -21,14 +21,14 @@ SplunkHelper.getCollector().reporting.put("configuration", runtimeconfig);
 This is a hashMap that takes input as either "string","string" or "string,hashMap" and will print the data into jSON format accordingly.
 
 Steps
-1) Initial your connect details to Splunk
+1) Initiate your connect details to Splunk
 2) Feed data during run time
 Test Start
 Test Steps
 Test End / Results
 Around this you can feed configuration details or anything else you wish
-Submit each test case upon completion of the test (test end)
-And when all tests are done reporting perform a commit
+3) Submit each test case upon completion of the test (test end)
+4) And when all tests are done reporting perform a commit
 
 This is also meant to be utilized with 2 or more devices running in parallel (the same test case) and it will utilize the best results of the 3 as the main reporting in the payload.  This ensures buggy devices, environment, etc doesn't "alert" bad results.
 
