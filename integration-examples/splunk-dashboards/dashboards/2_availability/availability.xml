@@ -1,0 +1,327 @@
+<form script="custom_table_row_expansion.js,table_drilldown_url_field.js">
+  <label>Availability and Performance</label>
+  <fieldset autoRun="true" submitButton="true">
+    <input type="time" token="TimePicker" searchWhenChanged="true">
+      <label>Time</label>
+      <default>
+        <earliest>-4h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="timespan" searchWhenChanged="true">
+      <label>Timespan</label>
+      <default>10min</default>
+      <choice value="10m">10min</choice>
+      <choice value="30m">30min</choice>
+      <choice value="1h">1hr</choice>
+      <choice value="2h">2hr</choice>
+      <choice value="4h">4hr</choice>
+      <choice value="1d">1day</choice>
+    </input>
+    <input type="dropdown" token="monitor" searchWhenChanged="true">
+      <label>Monitor</label>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.methodName", "_raw" | dedup "Primary.configuration.methodName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.methodName</fieldForLabel>
+      <fieldForValue>Primary.configuration.methodName</fieldForValue>
+      <default>EditNickname</default>
+      <initialValue>EditNickname</initialValue>
+    </input>
+    <input type="dropdown" token="status" searchWhenChanged="true">
+      <label>Test Status</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.testResults.testStatus", "_raw" | dedup "Primary.testResults.testStatus"</query>
+      </search>
+      <fieldForLabel>Primary.testResults.testStatus</fieldForLabel>
+      <fieldForValue>Primary.testResults.testStatus</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="perfstatus" searchWhenChanged="true">
+      <label>Performance Status</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.testResults.performanceStatus", "_raw" | dedup "Primary.testResults.performanceStatus"</query>
+      </search>
+      <fieldForLabel>Primary.testResults.performanceStatus</fieldForLabel>
+      <fieldForValue>Primary.testResults.performanceStatus</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="device" searchWhenChanged="true">
+      <label>Device Model</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Primary.environment.model</fieldForLabel>
+      <fieldForValue>Primary.environment.model</fieldForValue>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.environment.model", "_raw" | dedup "Primary.environment.model"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platform" searchWhenChanged="true">
+      <label>Platform</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.desired.platformName", "_raw" | dedup "Primary.configuration.allCapabilities.caps.desired.platformName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platformversion" searchWhenChanged="true">
+      <label>Platform Version</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.platformVersion", "_raw" | dedup "Primary.configuration.allCapabilities.caps.platformVersion"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.platformVersion</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.platformVersion</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+  </fieldset>
+  <row depends="$hide$">
+    <panel>
+      <!--creates an HTML panel in order to create an inline style sheet-->
+      <html>
+         <p/>
+        <style>
+ 
+          
+          .panel-title {
+              background-color: #191f22 !important;
+              color: white;
+          }
+          
+          i.icon-sorts {display: none;}
+          th { pointer-events: none;}
+          
+         
+                
+        </style>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>  
+      <H1>Dashboards</H1>
+         <table>
+           <tr>
+        <td style="padding:10px">
+             <a href="bofa_monitoring_example">
+          <h3>Home Dashboard</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="sdfsdf">
+          <h3>Availability and Performance</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="ddd">
+          <h3>Test View</h3>
+        </a>
+        </td>
+        </tr>
+        </table>
+       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>$monitor$</title>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" | eval Availability=if('Primary.testResults.testStatus'="Pass", 100, if(isnull('Primary.testResults.testStatus'),null,0)) | eval Failed=if('Primary.testResults.testStatus'="Fail", 100, if(isnull('Primary.testResults.testStatus'),null,0)) | eval Errors=if('Primary.testResults.testStatus'="Pass", 0, if('Primary.testResults.testStatus'="Fail",null,1)) | eval RunError=if('Primary.testResults.testStatus'="Fail", 1, null) | sort -_time | timechart avg(Failed) as "% Failed" avg(Availability) as "% Passed"</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
+        <option name="charting.axisLabelsY.majorUnit">20</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.text">Time</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.maximumNumber">100</option>
+        <option name="charting.axisY.minimumNumber">0</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">1</option>
+        <option name="charting.axisY2.minimumNumber">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.overlayFields">ErrorCount,TotalRuns,ExecutionErrors</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">stacked100</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.fieldColors">{"% Passed": 0x0E31EB, "% Failed":0xd93f3c "TotalRuns": 0x333333, "ErrorCount": 0xE5C454}</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisEnd</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="height">250</option>
+        <option name="link.openSearch.visible">0</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Average Transaction time</title>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="*" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" | spath | rename Primary.tests.EditNickname.Steps{}.stepDescription AS StepDescription, Primary.tests.EditNickname.Steps{}.stepTimer AS StepTimer | eval x=mvzip(StepDescription,StepTimer) | mvexpand x | eval x=split(x,",") | eval StepDescription=mvindex(x,0) | eval StepTimer=mvindex(x,1) | eval trans=StepTimer | timechart span=$timespan$ avg(trans) by StepDescription</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.abbreviation">none</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.abbreviation">none</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">connect</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.mode">standard</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.lineWidth">2</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Failures Count</title>
+      <chart>
+        <search>
+          <query>index=bofa_automation Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.testResults.testStatus="Fail"  | sort - _time | stats count(Primary.testResults.testStatus) as Failures</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">radialGauge</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.rangeValues">[0,5,10,24]</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.gaugeColors">["0x84E900","0xFFE800","0xBF3030"]</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Pass Count</title>
+      <chart>
+        <search>
+          <query>index=bofa_automation Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.testResults.testStatus="Pass"  | sort - _time | stats count(Primary.testResults.testStatus) as Passes</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">radialGauge</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.rangeValues">[0,5,10,24]</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.gaugeColors">["0x84E900","0xFFE800","0xBF3030"]</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Primary Run Transactions</title>
+      <table>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$"  | sort - _time | rename "Primary.configuration.methodName" as MonitorName, "Primary.testResults.testStatus" as "Test Status", "Primary.tests."$monitor$".Steps{}.step" as Step, "Primary.timeValues.testExecutionStart" as "Start Time", "Primary.tests."$monitor$".Steps{}.stepStatus" as "Step Status", Primary.environment.model  as "Device Model", _time as time | sort - time | table  MonitorName, "Device Model", "Test Status", Step, "Step Status", "Start Time"</query>
+          <sampleRatio>1</sampleRatio>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Test Status">
+          <colorPalette type="map">{"Pass":#008000,"Fail":#FF0000}</colorPalette>
+        </format>
+        <format type="number" field="Step Status"></format>
+        <format type="color" field="MonitorName">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+        <drilldown>
+          <link>ddd?form.executionStartTime=$row.Start Time$&amp;form.monitor=$click.value$&amp;form.status=$status$&amp;form.perfstatus=$perfstatus$&amp;form.platform=$platform$&amp;form.platformversion=$platformversion$&amp;form.device=$device$</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>
