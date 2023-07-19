@@ -13,7 +13,10 @@ The Splunk Dashboard directory contains both the XML markup to integrate directl
 
 This section gives you a detailed view the test case that executed that includes all configuration and environmental details related to the execution.
 
-![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/b39d5dfb-49da-40b5-8ab7-211ef5314449) <br>
+![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/845019b3-67ee-4899-986d-4294a3412444)
+
+
+<br>
 
 ![6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/cd8992a3-04a0-4b9e-933f-5966d8371f8f)
 
