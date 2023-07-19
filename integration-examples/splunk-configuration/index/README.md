@@ -13,35 +13,35 @@ You will find all the details here on how to configure Splunk.  You will need to
 
 <h4>Creating and Configuring Index</h4>
 
-Select Settings and then Indexes.
+Select Settings and then Indexes.(`<br>`)
 ![splunkindex1](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/9ea3a21d-8794-44d0-8aad-e05d2c6fec42)
 
 
-Select the new index.
+Select the new index.(`<br>`)
 ![splunkindex2](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/9c3deed6-420a-4025-a559-1f63347598ee)
 
 
-Enter an Index Name and select Search & Reporting from App section and click save
+Enter an Index Name and select Search & Reporting from App section and click save(`<br>`)
 ![splunkindex3](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/a803a092-67ac-49d2-9f81-f78ec06ad39b)
 
 
-Before you can see the data added to the index, you must ensure your user has access to the index.
+Before you can see the data added to the index, you must ensure your user has access to the index.(`<br>`)
 ![splunkindex4](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/55e7a12a-b865-40dd-878f-6db1126fc01f)
 
 
-Select settings and then Access Controls
+Select settings and then Access Controls(`<br>`)
 ![splunkindex5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/2c36b818-e9b4-471e-9a66-2f69337ca88a)
 
-Select Roles
+Select Roles(`<br>`)
 ![splunkindex6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/f4e1251e-ea40-4229-89a3-97fbf23475f6)
 
-Select the role you wish to modify
+Select the role you wish to modify(`<br>`)
 ![splunkindex7](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/81e9431a-c927-4eb5-8cf6-b116072256c0)
 
-Scroll to indexes searched by default and the indexes section at bottom of page. From here add your newly created index to the selected indexes section then click save.
+Scroll to indexes searched by default and the indexes section at bottom of page. From here add your newly created index to the selected indexes section then click save.(`<br>`)
 ![splunkindex8](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/037a290a-d835-44f4-b29c-58ac7a470958)
 
-dsfsdfsd
+dsfsdfsd(`<br>`)
 ![splunkindex9](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/abafe9a1-050e-428d-b8ea-f36bdb029dc7)
 
 
