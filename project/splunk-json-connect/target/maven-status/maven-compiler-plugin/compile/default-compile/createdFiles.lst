@@ -1,0 +1,7 @@
+com/perfecto/splunk/SplunkReportingCollector.class
+com/perfecto/splunk/Reporting.class
+com/perfecto/splunk/SplunkReporting.class
+com/perfecto/splunk/ReportingCollectorFactory.class
+com/perfecto/splunk/SplunkConnect.class
+com/perfecto/splunk/ReportingFactory.class
+com/perfecto/splunk/SplunkConnect$availableSchemes.class
