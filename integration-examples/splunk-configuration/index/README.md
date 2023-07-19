@@ -25,10 +25,7 @@ Select the new index.<br>
 Enter an Index Name and select Search & Reporting from App section and click save<br>
 ![splunkindex3](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/a803a092-67ac-49d2-9f81-f78ec06ad39b)
 
-
-Before you can see the data added to the index, you must ensure your user has access to the index.<br>
-![splunkindex5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/2c36b818-e9b4-471e-9a66-2f69337ca88a)
-
+Before you can see the data added to the index, you must ensure your user has access to the index.<br><br>
 
 Select settings and then Access Controls<br>
 ![splunkindex6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/f4e1251e-ea40-4229-89a3-97fbf23475f6)
