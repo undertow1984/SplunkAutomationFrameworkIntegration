@@ -5,6 +5,14 @@ This project contains components licensed under the Apache 2.0 license agreement
 <h1>Project Overview</h1>
 The buildable and consumable portion of this project can be found under the project folder.
 
+This project is inteded to integrate into any Selenium/Appium based Java framework and collect test details to submit to a Splunk api endpoint (http event collector).  The payload is delivered in a jSON format and then is consumable, queryable, and usable by Splunk for creating execution report dashboards.  These dashboards depending on your implmenetaion and usage could be the main reporting source for your entire framework or just a means of performing environment monitoring.  Along with Splunk's alert features that will key off of queryable data in real-time you can even alert individuals via email off of key data criteria that you find necessary. <br><br>
+
+Through the integration examples you will find various ways of implementing this library into your code you have today.
+
+Things to keep in mind is there are some mandatory fields which are required by the library.
+
+
+
 <h1>Dependencies</h1>
 This is a Java (1.8) Maven project utilizing 
 
