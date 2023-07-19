@@ -9,8 +9,28 @@ This project is inteded to integrate into any Selenium/Appium based Java framewo
 
 Through the integration examples you will find various ways of implementing this library into your code you have today.
 
-Things to keep in mind is there are some mandatory fields which are required by the library.
+Things to keep in mind is there are some mandatory requirements for the utilization
 
+1) testName (case sensitive) must be a value submitted to the final execution
+2) Test steps aren't required to be submitted but they are extremely useful especially for monitoring
+3) You can set a global SLA (service level agreement) at the time you initiate the connection OR when reporting the steps themselves. This will help account for performance pass/fail vs functionally pass/fail.
+4) You can define any value you wish to submit as follows
+   <br> 
+SplunkHelper.getCollector().reporting.put("configuration", runtimeconfig);
+
+This is a hashMap that takes input as either "string","string" or "string,hashMap" and will print the data into jSON format accordingly.
+
+Steps
+1) Initial your connect details to Splunk
+2) Feed data during run time
+Test Start
+Test Steps
+Test End / Results
+Around this you can feed configuration details or anything else you wish
+Submit each test case upon completion of the test (test end)
+And when all tests are done reporting perform a commit
+
+This is also meant to be utilized with 2 or more devices running in parallel (the same test case) and it will utilize the best results of the 3 as the main reporting in the payload.  This ensures buggy devices, environment, etc doesn't "alert" bad results.
 
 
 <h1>Dependencies</h1>
