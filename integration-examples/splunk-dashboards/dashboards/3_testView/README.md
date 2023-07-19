@@ -8,3 +8,13 @@ The intention of these code examples is to simply show some integration possibil
 
 <h3>"splunk-dashboard"</h1>
 The Splunk Dashboard directory contains both the XML markup to integrate directly into Splunks dashboard interface as well as screenshot examples of each dashboard.  Note the Dashboards themselves are currently a work in progress and may contain bugs.  If unsure how to utilize please work with your Splunk administrator for implementation.
+
+<h3>Test View</h3>
+
+This section gives you a detailed view the test case that executed that includes all configuration and environmental details related to the execution.
+
+![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/b39d5dfb-49da-40b5-8ab7-211ef5314449) <br>
+
+![6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/047f0555-9332-4952-9e61-de4504b4b143)
+<br>
+
