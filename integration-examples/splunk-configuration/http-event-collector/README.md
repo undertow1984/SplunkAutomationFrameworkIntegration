@@ -28,13 +28,10 @@ Select New Token <br>
 
 
 Enter a data collector name and click next <br>
-![4](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/78245bea-ab09-4ef9-83ec-2a6df926c411)
-
+![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/b0f151b6-db39-4efa-85cd-f71ca66a2887)
 
 
 Add an index you wish for the HEC to use to the selected items list and click review <br>
-![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/b0f151b6-db39-4efa-85cd-f71ca66a2887)
-
 
 Ensure the HTTP Event Collector is now enabled. <br>
 ![6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/8228d279-5d07-49ee-ba1e-6d6b20e0e2e0)
