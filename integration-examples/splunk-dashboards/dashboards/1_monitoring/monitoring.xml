@@ -1,0 +1,210 @@
+<form script="custom_table_row_expansion.js,table_drilldown_url_field.js">
+  <label>Monitoring</label>
+  <fieldset autoRun="true" submitButton="true">
+    <input type="time" token="TimePicker" searchWhenChanged="true">
+      <label>Time</label>
+      <default>
+        <earliest>-4h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="timespan" searchWhenChanged="true">
+      <label>Timespan</label>
+      <default>10min</default>
+      <choice value="10m">10min</choice>
+      <choice value="30m">30min</choice>
+      <choice value="1h">1hr</choice>
+      <choice value="2h">2hr</choice>
+      <choice value="4h">4hr</choice>
+      <choice value="1d">1day</choice>
+    </input>
+    <input type="dropdown" token="monitor" searchWhenChanged="true">
+      <label>Monitor</label>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.methodName", "_raw" | dedup "Primary.configuration.methodName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.methodName</fieldForLabel>
+      <fieldForValue>Primary.configuration.methodName</fieldForValue>
+      <default>EditNickname</default>
+      <initialValue>EditNickname</initialValue>
+    </input>
+    <input type="dropdown" token="device" searchWhenChanged="true">
+      <label>Device Model</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Primary.environment.model</fieldForLabel>
+      <fieldForValue>Primary.environment.model</fieldForValue>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.environment.model", "_raw" | dedup "Primary.environment.model"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platform" searchWhenChanged="true">
+      <label>Platform</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.desired.platformName", "_raw" | dedup "Primary.configuration.allCapabilities.caps.desired.platformName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platformversion" searchWhenChanged="true">
+      <label>Platform Version</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.platformVersion", "_raw" | dedup "Primary.configuration.allCapabilities.caps.platformVersion"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.platformVersion</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.platformVersion</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+  </fieldset>
+  <row depends="$hide$">
+    <panel>
+      <!--creates an HTML panel in order to create an inline style sheet-->
+      <html>
+         <p/>
+        <style>
+ 
+          
+          #test .panel-title {
+              background-color: #191f22 !important;
+              color: white;
+          }
+          
+          i.icon-sorts {display: none;}
+          th { pointer-events: none;}
+          
+         
+                
+        </style>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>  
+      <H1>Dashboards</H1>
+         <table>
+           <tr>
+        <td style="padding:10px">
+             <a href="sdfsdf">
+          <h3>Home Dashboard</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="sdfsdf">
+          <h3>Availability and Performance</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="ddd">
+          <h3>Test View</h3>
+        </a>
+        </td>
+        </tr>
+        </table>
+       </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Monitors Dashboard Test Status</title>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="*" Primary.testResults.performanceStatus="*" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$"  | eval Status=if('Primary.testResults.testStatus'="Pass", 100, if(isnull('Primary.testResults.testStatus'),null,50)) | eval Failed=if('Primary.testResults.testStatus'="Fail", 100, if(isnull('Primary.testResults.testStatus'),null,0))  | eval Errors=if('Primary.testResults.testStatus'="Pass", 0, if('Primary.testResults.testStatus'="Fail",null,1)) |eval AllFailed=if('Primary.testResults.testStatus'="Fail",1, if("Secondary1.testResults.testStatus"="Fail",1,null)) | eval Passed=if('Primary.testResults.testStatus'="Pass", 100, if(isnull('Primary.testResults.testStatus'),null,0)) | eval RunError=if('Primary.testResults.testStatus'="Fail", 100, null) | eval lastFailed=if('Primary.testResults.testStatus'="Fail", 'Primary.testExecutionEnd', if(isnull(Primary.testResults.testStatus),null,0)) | chart first("Primary.testResults.testStatus") as "Last Status" first(lastFailed) as "Last Failure"  count avg(Failed) as "% Failed" avg(Passed) as "% Passed" sparkline(avg(Status), $timespan$) as Availability by Primary.configuration.methodName | sort -"Last Failure" | rename Primary.configuration.methodName as "Monitor"</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+        </search>
+        <!-- Set span for each sparkline datapoint to be 1 hour -->
+        <!-- Set sparkline options here; make sure that field matches field name of the search results -->
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">false</option>
+        <format type="number" field="% Passed">
+          <option name="precision">0</option>
+        </format>
+        <format type="number" field="% Failed">
+          <option name="precision">0</option>
+        </format>
+        <format type="color" field="Last Status">
+          <colorPalette type="map">{"Pass":#008000,"Fail":#ff0000}</colorPalette>
+        </format>
+        <format field="Availability" type="sparkline">
+          <option name="chartRangeMax">100</option>
+          <option name="chartRangeMin">50</option>
+          <option name="tooltipPrefix">Value of 100 indicates no failures. Click to drill down to accurate failure percentages.</option>
+          <option name="type">bar</option>
+          <option name="chartRangeMin">50</option>
+          <option name="height">30px</option>
+          <option name="width">2px</option>
+          <option name="colorMap">
+            <option name="100:">#42f445</option>
+            <option name=":99.9999">#f44250</option>
+          </option>
+          <option name="barWidth">5px</option>
+          <option name="barHeight">30px</option>
+        </format>
+        <drilldown>
+          <link>sdfsdf?form.monitor=$click.value$&amp;form.status=$row.Last Status$&amp;form.perfstatus=*&amp;form.TimePicker.earliest=$TimePicker.earliest$&amp;form.TimePicker.lastest=$TimePicker.latest$&amp;form.timespan=$timespan$&amp;form.platform=$platform$&amp;form.platformversion=$platformversion$&amp;form.device=$device$</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Monitors Dashboard Performance Status</title>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="*" Primary.testResults.performanceStatus="*" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" 
+Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$"  |  eval Status=if('Primary.testResults.performanceStatus'="Pass", 100, if(isnull('Primary.testResults.performanceStatus'),null,50)) | eval Failed=if('Primary.testResults.performanceStatus'="Fail", 100, if(isnull('Primary.testResults.performanceStatus'),null,0))  | eval Errors=if('Primary.testResults.performanceStatus'="Pass", 0, if('Primary.testResults.performanceStatus'="Fail",null,1)) |eval AllFailed=if('Primary.testResults.performanceStatus'="Fail",1, if("Secondary1.testResults.testStatus"="Fail",1,null)) | eval Passed=if('Primary.testResults.performanceStatus'="Pass", 100, if(isnull('Primary.testResults.performanceStatus'),null,0)) | eval RunError=if('Primary.testResults.performanceStatus'="Fail", 100, null) | eval lastFailed=if('Primary.testResults.performanceStatus'="Fail", 'Primary.testExecutionEnd', if(isnull(Primary.testResults.performanceStatus),null,0)) | chart first("Primary.testResults.performanceStatus") as "Last Status" first(lastFailed) as "Last Failure"  count avg(Failed) as "% Failed" avg(Passed) as "% Passed" sparkline(avg(Status), $timespan$) as Availability by Primary.configuration.methodName | sort -"Last Failure" | rename Primary.configuration.methodName as "Monitor"</query>
+          <earliest>$TimePicker.earliest$</earliest>
+          <latest>$TimePicker.latest$</latest>
+        </search>
+        <!-- Set span for each sparkline datapoint to be 1 hour -->
+        <!-- Set sparkline options here; make sure that field matches field name of the search results -->
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">false</option>
+        <format type="number" field="% Passed">
+          <option name="precision">0</option>
+        </format>
+        <format type="number" field="% Failed">
+          <option name="precision">0</option>
+        </format>
+        <format type="color" field="Last Status">
+          <colorPalette type="map">{"Pass":#008000,"Fail":#ff0000}</colorPalette>
+        </format>
+        <format field="Availability" type="sparkline">
+          <option name="chartRangeMax">100</option>
+          <option name="chartRangeMin">50</option>
+          <option name="tooltipPrefix">Value of 100 indicates no failures. Click to drill down to accurate failure percentages.</option>
+          <option name="type">bar</option>
+          <option name="chartRangeMin">50</option>
+          <option name="height">30px</option>
+          <option name="width">2px</option>
+          <option name="colorMap">
+            <option name="100:">#42f445</option>
+            <option name=":99.9999">#f44250</option>
+          </option>
+          <option name="barWidth">5px</option>
+          <option name="barHeight">30px</option>
+        </format>
+        <drilldown>
+          <link>sdfsdf?form.monitor=$click.value$&amp;form.status=*&amp;form.perfstatus=$row.Last Status$&amp;form.TimePicker.earliest=$TimePicker.earliest$&amp;form.TimePicker.lastest=$TimePicker.latest$&amp;form.timespan=$timespan$&amp;form.platform=$platform$&amp;form.platformversion=$platformversion$&amp;form.device=$device$</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>
