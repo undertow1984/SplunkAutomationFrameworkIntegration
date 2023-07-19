@@ -1,0 +1,592 @@
+{
+    "Secondary1": {
+        "testResults": {
+            "performanceStatus": "Pass",
+            "testStatus": "Pass"
+        },
+        "environment": {
+            "hostName": "Mac-mini.local",
+            "appVersion": "appName",
+            "jenkins": {
+                "jenkinsJobName": "Discovery",
+                "jenkinsBuildUrl": "http://127.0.0.1:8080/job/Discovery/452/",
+                "jenkinsBuildNum": "452",
+                "jenkinsBuildId": "452",
+                "jenkinsWorkspace": "/Users/under/.jenkins/workspace/Discovery"
+            },
+            "project": "February 2022",
+            "model": "BLU G8",
+            "appEnvironment": "production"
+        },
+        "tests": {
+            "EditNickname": {
+                "Steps": [
+                    {
+                        "stepTimer": 13745,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Given I wait \"10\" seconds for \"enviro.button.prod=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/env_selection_text\" and @text=\"ENV_PROD\"]\" to appear",
+                        "step": "Step1",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:56:45 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:56:59 PM"
+                    },
+                    {
+                        "stepTimer": 663,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro.button.prod=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/env_selection_text\" and @text=\"ENV_PROD\"]\" and I wait \"10\" seconds for \"enviro_two.button.prod=xpath=//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"PRODUCTION\"]\" to appear",
+                        "step": "Step2",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:56:59 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:00 PM"
+                    },
+                    {
+                        "stepTimer": 1256,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro_two.button.prod=xpath=//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"PRODUCTION\"]\" and I wait \"10\" seconds for \"enviro.button.proceed=id=appPackageName:id/btn_proceed_env\" to appear",
+                        "step": "Step3",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:00 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:01 PM"
+                    },
+                    {
+                        "stepTimer": 4531,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro.button.proceed=id=appPackageName:id/btn_proceed_env\" and I wait \"10\" seconds for \"mhp.agreement.accept.button=xpath=//android.widget.Button[@text=\"Accept\"]\" to appear",
+                        "step": "Step4",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:01 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:06 PM"
+                    },
+                    {
+                        "stepTimer": 395,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.agreement.accept.button=xpath=//android.widget.Button[@text=\"Accept\"]\" and I wait \"10\" seconds for \"mhp.loginenroll.button=id=appPackageName:id/welcome_btn_login\" to appear",
+                        "step": "Step5",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:06 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:06 PM"
+                    },
+                    {
+                        "stepTimer": 2437,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.loginenroll.button=id=appPackageName:id/welcome_btn_login\" and I wait \"10\" seconds for \"mhp.userid.textbox\" to appear",
+                        "step": "Step6",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:06 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:08 PM"
+                    },
+                    {
+                        "stepTimer": 3535,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.userid.textbox\" and enter \"${values.userid}\"",
+                        "step": "Step7",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:08 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:12 PM"
+                    },
+                    {
+                        "stepTimer": 2806,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.password.textbox\" and enter \"${values.password}\"",
+                        "step": "Step8",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:12 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:15 PM"
+                    },
+                    {
+                        "stepTimer": 2157,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.login.button=id=appPackageName:id/signin_btn_submit\" and I wait \"10\" seconds for \"popups.phonecalls.allow.button=xpath=//*[translate(@text,\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\")=\"allow\"]\" to appear",
+                        "step": "Step9",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:15 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:17 PM"
+                    },
+                    {
+                        "stepTimer": 5415,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.phonecalls.allow.button=xpath=//*[translate(@text,\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\")=\"allow\"]\" and I wait \"10\" seconds for \"popups.alert.notnow.button=id=appPackageName:id/btn_customsetup\" to appear",
+                        "step": "Step10",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:17 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:22 PM"
+                    },
+                    {
+                        "stepTimer": 1606,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.alert.notnow.button=id=appPackageName:id/btn_customsetup\" and I wait \"10\" seconds for \"popups.alert.dontshow.button=//android.widget.Button[@resource-id=\"android:id/button2\" and @text=\"Don't Show Again\"]\" to appear",
+                        "step": "Step11",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:22 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:24 PM"
+                    },
+                    {
+                        "stepTimer": 3594,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.alert.dontshow.button=//android.widget.Button[@resource-id=\"android:id/button2\" and @text=\"Don't Show Again\"]\" and I wait \"10\" seconds for \"accountsoverview.search.textbox=id=appPackageName:id/search_src_text\" to appear",
+                        "step": "Step12",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:24 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:28 PM"
+                    },
+                    {
+                        "stepTimer": 1690,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Given I click on \"globalnav.accounts.button=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/tabtext\" and @text=\"Accounts\"]\" and I wait \"10\" seconds for \"accountsoverview.search.textbox=id=appPackageName:id/search_src_text\" to appear",
+                        "step": "Step13",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:28 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:29 PM"
+                    },
+                    {
+                        "stepTimer": 3934,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"accountsoverview.openfirstaccount.button=xpath=(//android.widget.Button[@resource-id=\"appPackageName:id/elementAsset\"])[1]\" and I wait \"10\" seconds for \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" to appear",
+                        "step": "Step14",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:29 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:33 PM"
+                    },
+                    {
+                        "stepTimer": 2806,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" and I wait \"10\" seconds for \"editnickname.accountname.text=id=appPackageName:id/__boa_et_tv_description\" to appear",
+                        "step": "Step15",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:33 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:36 PM"
+                    },
+                    {
+                        "stepTimer": 3,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I generate a random value and store in variable \"randnickname\"",
+                        "step": "Step16",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:36 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:36 PM"
+                    },
+                    {
+                        "stepTimer": 1798,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"editnickname.name.textbox=id=appPackageName:id/__boa_et_embedded_edittext\" and enter \"${randnickname}=sjecoqm8782\"",
+                        "step": "Step17",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:36 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:38 PM"
+                    },
+                    {
+                        "stepTimer": 3144,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"editnickname.done.button=id=appPackageName:id/btn_edittext_done\" and I wait \"10\" seconds for \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" to appear",
+                        "step": "Step18",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:38 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:41 PM"
+                    },
+                    {
+                        "stepTimer": 864,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I validate \"popups.messagebox.text=xpath=//*[@resource-id=\"appPackageName:id/tv_message_secondary_text\"]|//*[@resource-id=\"appPackageName:id/message_heading\"]\" contains the value \"The account nickname was updated.\"",
+                        "step": "Step19",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:41 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:42 PM"
+                    }
+                ]
+            }
+        },
+        "configuration": {
+            "runtimeParams": {
+                "appium.capabilities.udid": "1110308019002720",
+                "env.resources": "src/main/resources/android",
+                "driver.name": "appiumDriver"
+            },
+            "methodName": "EditNickname",
+            "allCapabilities": {
+                "caps": {
+                    "app": "/Users/under/DevEnv/appName.apk",
+                    "appPackage": "appPackageName",
+                    "automationName": "Appium",
+                    "browserName": "",
+                    "cssSelectorsEnabled": true,
+                    "databaseEnabled": false,
+                    "desired": {
+                        "browserName": "",
+                        "platformName": "android",
+                        "cssSelectorsEnabled": true,
+                        "driverClass": "io.appium.java_client.android.AndroidDriver",
+                        "javascriptEnabled": true,
+                        "takesScreenshot": true,
+                        "app": "/Users/under/DevEnv/appName.apk",
+                        "automationName": "Appium",
+                        "udid": "1110308019002720"
+                    },
+                    "deviceApiLevel": 28,
+                    "deviceManufacturer": "BLU",
+                    "deviceModel": "G8",
+                    "deviceName": "1110308019002720",
+                    "deviceScreenDensity": 320,
+                    "deviceScreenSize": "720x1520",
+                    "deviceUDID": "1110308019002720",
+                    "driverClass": "io.appium.java_client.android.AndroidDriver",
+                    "javascriptEnabled": true,
+                    "locationContextEnabled": false,
+                    "networkConnectionEnabled": true,
+                    "pixelRatio": 2,
+                    "platform": "LINUX",
+                    "platformName": "android",
+                    "platformVersion": "9",
+                    "statBarHeight": 55,
+                    "takesScreenshot": true,
+                    "udid": "1110308019002720",
+                    "viewportRect": {
+                        "left": 0,
+                        "top": 55,
+                        "width": 720,
+                        "height": 1314
+                    },
+                    "warnings": {},
+                    "webStorageEnabled": false
+                }
+            },
+            "tags": [
+                "@Success",
+                "@AccountDetails",
+                "@Nickname",
+                "@ProfileandSettings",
+                "Android Nickname Blu G8",
+                "EditNickname Suite",
+                "SuccessNicknameScenarios"
+            ]
+        },
+        "timeValues": {
+            "dateLocal": "2022-02-03",
+            "testExecutionDuration": 57,
+            "monthLocal": "02",
+            "yearUTC": "2022",
+            "dateUTC": "2022-02-04",
+            "hourLocal": "21",
+            "testExecutionStart": "Feb 3, 2022 9:56:45 PM",
+            "hourUTC": "02",
+            "monthUTC": "02",
+            "timeUTC": "02:56:45",
+            "yearLocal": "2022",
+            "testExecutionEnd": "Feb 3, 2022 9:57:42 PM",
+            "timeLocal": "21:56:45"
+        }
+    },
+    "Primary": {
+        "testResults": {
+            "performanceStatus": "Pass",
+            "testStatus": "Pass"
+        },
+        "environment": {
+            "hostName": "Mac-mini.local",
+            "appVersion": "appName",
+            "jenkins": {
+                "jenkinsJobName": "Discovery",
+                "jenkinsBuildUrl": "http://127.0.0.1:8080/job/Discovery/452/",
+                "jenkinsBuildNum": "452",
+                "jenkinsBuildId": "452",
+                "jenkinsWorkspace": "/Users/under/.jenkins/workspace/Discovery"
+            },
+            "project": "February 2022",
+            "model": "samsung SM-S506DL",
+            "appEnvironment": "production"
+        },
+        "tests": {
+            "EditNickname": {
+                "Steps": [
+                    {
+                        "stepTimer": 13223,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Given I wait \"10\" seconds for \"enviro.button.prod=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/env_selection_text\" and @text=\"ENV_PROD\"]\" to appear",
+                        "step": "Step1",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:56:45 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:56:59 PM"
+                    },
+                    {
+                        "stepTimer": 496,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro.button.prod=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/env_selection_text\" and @text=\"ENV_PROD\"]\" and I wait \"10\" seconds for \"enviro_two.button.prod=xpath=//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"PRODUCTION\"]\" to appear",
+                        "step": "Step2",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:56:59 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:56:59 PM"
+                    },
+                    {
+                        "stepTimer": 2270,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro_two.button.prod=xpath=//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"PRODUCTION\"]\" and I wait \"10\" seconds for \"enviro.button.proceed=id=appPackageName:id/btn_proceed_env\" to appear",
+                        "step": "Step3",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:56:59 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:01 PM"
+                    },
+                    {
+                        "stepTimer": 4255,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"enviro.button.proceed=id=appPackageName:id/btn_proceed_env\" and I wait \"10\" seconds for \"mhp.agreement.accept.button=xpath=//android.widget.Button[@text=\"Accept\"]\" to appear",
+                        "step": "Step4",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:01 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:06 PM"
+                    },
+                    {
+                        "stepTimer": 532,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.agreement.accept.button=xpath=//android.widget.Button[@text=\"Accept\"]\" and I wait \"10\" seconds for \"mhp.loginenroll.button=id=appPackageName:id/welcome_btn_login\" to appear",
+                        "step": "Step5",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:06 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:06 PM"
+                    },
+                    {
+                        "stepTimer": 3891,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.loginenroll.button=id=appPackageName:id/welcome_btn_login\" and I wait \"10\" seconds for \"mhp.userid.textbox\" to appear",
+                        "step": "Step6",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:06 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:10 PM"
+                    },
+                    {
+                        "stepTimer": 1506,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.userid.textbox\" and enter \"${values.userid}\"",
+                        "step": "Step7",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:10 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:12 PM"
+                    },
+                    {
+                        "stepTimer": 2824,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.password.textbox\" and enter \"${values.password}\"",
+                        "step": "Step8",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:12 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:14 PM"
+                    },
+                    {
+                        "stepTimer": 2136,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"mhp.login.button=id=appPackageName:id/signin_btn_submit\" and I wait \"10\" seconds for \"popups.phonecalls.allow.button=xpath=//*[translate(@text,\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\")=\"allow\"]\" to appear",
+                        "step": "Step9",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:15 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:17 PM"
+                    },
+                    {
+                        "stepTimer": 6774,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.phonecalls.allow.button=xpath=//*[translate(@text,\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\")=\"allow\"]\" and I wait \"10\" seconds for \"popups.alert.notnow.button=id=appPackageName:id/btn_customsetup\" to appear",
+                        "step": "Step10",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:17 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:23 PM"
+                    },
+                    {
+                        "stepTimer": 1717,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.alert.notnow.button=id=appPackageName:id/btn_customsetup\" and I wait \"10\" seconds for \"popups.alert.dontshow.button=//android.widget.Button[@resource-id=\"android:id/button2\" and @text=\"Don't Show Again\"]\" to appear",
+                        "step": "Step11",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:23 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:25 PM"
+                    },
+                    {
+                        "stepTimer": 3291,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "When I click on \"popups.alert.dontshow.button=//android.widget.Button[@resource-id=\"android:id/button2\" and @text=\"Don't Show Again\"]\" and I wait \"10\" seconds for \"accountsoverview.search.textbox=id=appPackageName:id/search_src_text\" to appear",
+                        "step": "Step12",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:25 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:29 PM"
+                    },
+                    {
+                        "stepTimer": 818,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Given I click on \"globalnav.accounts.button=xpath=//android.widget.TextView[@resource-id=\"appPackageName:id/tabtext\" and @text=\"Accounts\"]\" and I wait \"10\" seconds for \"accountsoverview.search.textbox=id=appPackageName:id/search_src_text\" to appear",
+                        "step": "Step13",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:29 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:29 PM"
+                    },
+                    {
+                        "stepTimer": 3898,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"accountsoverview.openfirstaccount.button=xpath=(//android.widget.Button[@resource-id=\"appPackageName:id/elementAsset\"])[1]\" and I wait \"10\" seconds for \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" to appear",
+                        "step": "Step14",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:29 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:33 PM"
+                    },
+                    {
+                        "stepTimer": 2374,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" and I wait \"10\" seconds for \"editnickname.accountname.text=id=appPackageName:id/__boa_et_tv_description\" to appear",
+                        "step": "Step15",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:33 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:36 PM"
+                    },
+                    {
+                        "stepTimer": 6,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I generate a random value and store in variable \"randnickname\"",
+                        "step": "Step16",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:36 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:36 PM"
+                    },
+                    {
+                        "stepTimer": 1239,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"editnickname.name.textbox=id=appPackageName:id/__boa_et_embedded_edittext\" and enter \"${randnickname}=fbebhax1157\"",
+                        "step": "Step17",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:36 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:37 PM"
+                    },
+                    {
+                        "stepTimer": 3196,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I click on \"editnickname.done.button=id=appPackageName:id/btn_edittext_done\" and I wait \"10\" seconds for \"accountoverview.editnickname.button=xpath=//android.widget.TextView[@text=\"EDIT\"]\" to appear",
+                        "step": "Step18",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:37 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:40 PM"
+                    },
+                    {
+                        "stepTimer": 1070,
+                        "stepTransactionStatus": "Pass",
+                        "stepDescription": "Then I validate \"popups.messagebox.text=xpath=//*[@resource-id=\"appPackageName:id/tv_message_secondary_text\"]|//*[@resource-id=\"appPackageName:id/message_heading\"]\" contains the value \"The account nickname was updated.\"",
+                        "step": "Step19",
+                        "stepStatus": "Pass",
+                        "stepStartTimestamp": "Feb 3, 2022 9:57:40 PM",
+                        "stepSLA": 20000,
+                        "stepEndTimestamp": "Feb 3, 2022 9:57:41 PM"
+                    }
+                ]
+            }
+        },
+        "configuration": {
+            "runtimeParams": {
+                "appium.capabilities.udid": "R58MA3THX5P",
+                "env.resources": "src/main/resources/android",
+                "driver.name": "appiumDriver"
+            },
+            "methodName": "EditNickname",
+            "allCapabilities": {
+                "caps": {
+                    "app": "/Users/under/DevEnv/appName.apk",
+                    "appPackage": "appPackageName",
+                    "automationName": "Appium",
+                    "browserName": "",
+                    "cssSelectorsEnabled": true,
+                    "databaseEnabled": false,
+                    "desired": {
+                        "browserName": "",
+                        "platformName": "android",
+                        "cssSelectorsEnabled": true,
+                        "driverClass": "io.appium.java_client.android.AndroidDriver",
+                        "javascriptEnabled": true,
+                        "takesScreenshot": true,
+                        "app": "/Users/under/DevEnv/appName.apk",
+                        "automationName": "Appium",
+                        "udid": "R58MA3THX5P"
+                    },
+                    "deviceApiLevel": 30,
+                    "deviceManufacturer": "samsung",
+                    "deviceModel": "SM-S506DL",
+                    "deviceName": "R58MA3THX5P",
+                    "deviceScreenDensity": 420,
+                    "deviceScreenSize": "1080x2340",
+                    "deviceUDID": "R58MA3THX5P",
+                    "driverClass": "io.appium.java_client.android.AndroidDriver",
+                    "javascriptEnabled": true,
+                    "locationContextEnabled": false,
+                    "networkConnectionEnabled": true,
+                    "pixelRatio": 2.625,
+                    "platform": "LINUX",
+                    "platformName": "android",
+                    "platformVersion": "11",
+                    "statBarHeight": 83,
+                    "takesScreenshot": true,
+                    "udid": "R58MA3THX5P",
+                    "viewportRect": {
+                        "left": 0,
+                        "top": 83,
+                        "width": 1080,
+                        "height": 2048
+                    },
+                    "warnings": {},
+                    "webStorageEnabled": false
+                }
+            },
+            "tags": [
+                "@Success",
+                "@AccountDetails",
+                "@Nickname",
+                "@ProfileandSettings",
+                "Android Nickname Samsung A50",
+                "EditNickname Suite",
+                "SuccessNicknameScenarios"
+            ]
+        },
+        "timeValues": {
+            "dateLocal": "2022-02-03",
+            "testExecutionDuration": 56,
+            "monthLocal": "02",
+            "yearUTC": "2022",
+            "dateUTC": "2022-02-04",
+            "hourLocal": "21",
+            "testExecutionStart": "Feb 3, 2022 9:56:45 PM",
+            "hourUTC": "02",
+            "monthUTC": "02",
+            "timeUTC": "02:56:45",
+            "yearLocal": "2022",
+            "testExecutionEnd": "Feb 3, 2022 9:57:41 PM",
+            "timeLocal": "21:56:45"
+        }
+    }
+}
