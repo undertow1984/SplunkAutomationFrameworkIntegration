@@ -27,20 +27,18 @@ Enter an Index Name and select Search & Reporting from App section and click sav
 
 
 Before you can see the data added to the index, you must ensure your user has access to the index.<br>
-![splunkindex4](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/55e7a12a-b865-40dd-878f-6db1126fc01f)
+![splunkindex5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/2c36b818-e9b4-471e-9a66-2f69337ca88a)
 
 
 Select settings and then Access Controls<br>
-![splunkindex5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/2c36b818-e9b4-471e-9a66-2f69337ca88a)
-
-Select Roles<br>
 ![splunkindex6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/f4e1251e-ea40-4229-89a3-97fbf23475f6)
 
-Select the role you wish to modify<br>
+Select Roles<br>
 ![splunkindex7](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/81e9431a-c927-4eb5-8cf6-b116072256c0)
 
-Scroll to indexes searched by default and the indexes section at bottom of page. From here add your newly created index to the selected indexes section then click save.<br>
+Select the role you wish to modify<br>
 ![splunkindex8](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/037a290a-d835-44f4-b29c-58ac7a470958)
 
-dsfsdfsd<br>
+
+Scroll to indexes searched by default and the indexes section at bottom of page. From here add your newly created index to the selected indexes section then click save.<br>
 ![splunkindex9](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/abafe9a1-050e-428d-b8ea-f36bdb029dc7)
