@@ -52,7 +52,7 @@ Select Edit on the Data Input you created <br>
 
 
 Enter a Source name <br>
-![10](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/f53917d8-1e0f-4df6-b475-80f429251b4c)
+
 
 Select Source Type as custom source type you created by following the process here <br>
 
@@ -67,6 +67,8 @@ By default Splunk limits messages to 10,000 bytes (characters). You can increase
 Navigate to your Splunk directory and open the props.conf file in \etc\system\default <br> <br>
 
 Modify the TRUNCATE property under the default section at the top of the file to change the maximum characters for a message. In my case I’ve increased to 1,000,000. <br> <br>
+
+![10](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/f53917d8-1e0f-4df6-b475-80f429251b4c)
 
 After the settings has been changed, restart your Splunk instance.
 
