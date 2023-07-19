@@ -12,13 +12,15 @@ Java Core 1.8
 
 Maven
 
-GSON 
-https://github.com/google/gson </ br>
-https://mvnrepository.com/artifact/com.google.code.gson/gson </ br>
+GSON
+https://github.com/google/gson
+
+https://mvnrepository.com/artifact/com.google.code.gson/gson
 
 Jackson FasterXML 
-https://github.com/FasterXML </ br>
-https://mvnrepository.com/artifact/com.fasterxml.jackson.core </ br>
+https://github.com/FasterXML
+
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core
 
 <h1>Examples of Integration</h1>
 
