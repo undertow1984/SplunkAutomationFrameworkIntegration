@@ -15,6 +15,7 @@ This section gives you a detailed view the test case that executed that includes
 
 ![5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/b39d5dfb-49da-40b5-8ab7-211ef5314449) <br>
 
-![6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/047f0555-9332-4952-9e61-de4504b4b143)
+![6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/cd8992a3-04a0-4b9e-933f-5966d8371f8f)
+
 <br>
 
