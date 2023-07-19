@@ -15,19 +15,15 @@ You will find all the details here on how to configure Splunk.  You will need to
 <h3>Creating your Data Source</h3>
 
 Click Settings and then Source types.<br>
-![splunk1](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/836b2621-60e6-499d-a4da-813341ec3c5f)
-
 
 Click New Source Type.<br>
-![splunk2](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/8401af7e-ecc6-46b8-ba12-4ecdeeb2424f)
-
 
 Set the Name and Description of the Source Type and change the Index Extractions to json.<br>
-![splunk3](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/897422f4-bd9d-44b5-ba3a-cfc4fa278637)
+
 
 
 Select Advanced and then add New Settings.<br>
-![splunk4](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/60219556-05c5-42b9-b62b-5bde686e0588)
+
 
 
 Add 3 new settings that match the ones in the following table.<br><br>
@@ -51,8 +47,5 @@ Add 3 new settings that match the ones in the following table.<br><br>
 </tr>
 </table><br>
 
-![splunk5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/42be5c61-e72f-41b0-a861-a0cc4a7836a1)
-
 Click Save.<br>
-![splunk6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/be0c0be1-51cb-4aba-877a-157945a78efb)
 
