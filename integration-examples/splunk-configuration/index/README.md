@@ -13,11 +13,12 @@ You will find all the details here on how to configure Splunk.  You will need to
 
 <h4>Creating and Configuring Index</h4>
 
-Select Settings and then Indexes.(`<br>`)
+Select Settings and then Indexes.
+
 ![splunkindex1](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/9ea3a21d-8794-44d0-8aad-e05d2c6fec42)
 
 
-Select the new index.(`<br>`)
+Select the new index.<br>
 ![splunkindex2](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/9c3deed6-420a-4025-a559-1f63347598ee)
 
 
