@@ -36,6 +36,8 @@ Add 3 new settings that match the ones in the following table.<br><br>
 <tr>
 <td>Name</td>
 <td>Value</td>
+</tr>
+  <tr></tr>
 <td>EXTRACT-QUOTED-KVPS</td>
 <td>(?:\\r\\n)?(?:\\n)?(?:\\t)?(?<_KEY_1>[a-zA-Z0-9._]+)=\\\"(?<_VAL_1>[A-Z0-9_\s:;!@#$%^&*()\/[\]{}|+.~,'\-]+)\\\</td>
 </tr>
