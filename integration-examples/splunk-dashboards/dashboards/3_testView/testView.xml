@@ -1,0 +1,292 @@
+<form script="custom_table_row_expansion.js,table_drilldown_url_field.js">
+  <label>Test View</label>
+  <fieldset autoRun="true" submitButton="true">
+    <input type="dropdown" token="monitor" searchWhenChanged="true">
+      <label>Monitor</label>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.methodName", "_raw" | dedup "Primary.configuration.methodName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.methodName</fieldForLabel>
+      <fieldForValue>Primary.configuration.methodName</fieldForValue>
+      <default>EditNickname</default>
+      <initialValue>EditNickname</initialValue>
+    </input>
+    <input type="dropdown" token="status" searchWhenChanged="true">
+      <label>Test Status</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.testResults.testStatus", "_raw" | dedup "Primary.testResults.testStatus"</query>
+      </search>
+      <fieldForLabel>Primary.testResults.testStatus</fieldForLabel>
+      <fieldForValue>Primary.testResults.testStatus</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="perfstatus" searchWhenChanged="true">
+      <label>Performance Status</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.testResults.performanceStatus", "_raw" | dedup "Primary.testResults.performanceStatus"</query>
+      </search>
+      <fieldForLabel>Primary.testResults.performanceStatus</fieldForLabel>
+      <fieldForValue>Primary.testResults.performanceStatus</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="device" searchWhenChanged="true">
+      <label>Device Model</label>
+      <choice value="*">All</choice>
+      <fieldForLabel>Primary.environment.model</fieldForLabel>
+      <fieldForValue>Primary.environment.model</fieldForValue>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.environment.model", "_raw" | dedup "Primary.environment.model"</query>
+      </search>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platform" searchWhenChanged="true">
+      <label>Platform</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.desired.platformName", "_raw" | dedup "Primary.configuration.allCapabilities.caps.desired.platformName"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.desired.platformName</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="platformversion" searchWhenChanged="true">
+      <label>Platform Version</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.configuration.allCapabilities.caps.platformVersion", "_raw" | dedup "Primary.configuration.allCapabilities.caps.platformVersion"</query>
+      </search>
+      <fieldForLabel>Primary.configuration.allCapabilities.caps.platformVersion</fieldForLabel>
+      <fieldForValue>Primary.configuration.allCapabilities.caps.platformVersion</fieldForValue>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="executionStartTime" searchWhenChanged="true">
+      <label>Execution Start Time</label>
+      <choice value="*">All</choice>
+      <search>
+        <query>((index="bofa_automation") (sourcetype="json_automation")) | fields "_time", "Primary.timeValues.testExecutionStart", "_raw" | dedup "Primary.timeValues.testExecutionStart"</query>
+      </search>
+      <fieldForLabel>Primary.timeValues.testExecutionStart</fieldForLabel>
+      <fieldForValue>Primary.timeValues.testExecutionStart</fieldForValue>
+      <selectFirstChoice>true</selectFirstChoice>
+    </input>
+  </fieldset>
+  <row depends="$hide$">
+    <panel>
+      <!--creates an HTML panel in order to create an inline style sheet-->
+      <html>
+         <p/>
+        <style>
+ 
+          
+          .panel-title {
+              background-color: #191f22 !important;
+              color: white;
+          }
+          
+          i.icon-sorts {display: none;}
+          th { pointer-events: none;}
+          
+         
+                
+        </style>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>  
+      <H1>Dashboards</H1>
+         <table>
+           <tr>
+        <td style="padding:10px">
+             <a href="bofa_monitoring_example">
+          <h3>Home Dashboard</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="bofa_availability_and_performance_example">
+          <h3>Availability and Performance</h3>
+        </a>
+        </td>
+        <td style="padding:10px">
+             <a href="bofa_test_view">
+          <h3>Test View</h3>
+        </a>
+        </td>
+        </tr>
+        </table>
+       </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="test">
+      <title>Test Case View</title>
+      <table>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | rename "Primary.configuration.methodName" as MonitorName, "Primary.testResults.testStatus" as "Test Status", "Primary.testResults.performanceStatus" as "Performance Status", "Primary.timeValues.testExecutionStart" as "Start Time" | table  MonitorName, "Test Status", "Performance Status", "Start Time" </query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Test Status">
+          <colorPalette type="map">{"Pass":#008000,"Fail":#FF0000}</colorPalette>
+        </format>
+        <format type="color" field="Performance Status">
+          <colorPalette type="map">{"Pass":#008000,"Fail":#FF0000}</colorPalette>
+        </format>
+        <format type="number" field="Step Status"></format>
+        <format type="color" field="MonitorName">
+          <colorPalette type="sharedList"></colorPalette>
+          <scale type="sharedCategory"></scale>
+        </format>
+        <drilldown>
+          <condition field="Link to Primary Run">
+            <link target="_blank">$click.value2|n$</link>
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Environment</title>
+      <table>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | rename "Primary.environment.appVersion" as "App Version", "Primary.environment.appEnvironment" as "App Environment", "Primary.environment.hostName" as "Host", "Primary.environment.model" as "Device Model", "Primary.environment.project" as "Project" | table "App Version", "App Environment", "Host", "Device Model", "Project" </query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Configurations</title>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.configuration.runFactoryClass | rename outputd as "RunClass" | table "RunClass"</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.configuration.runtimeParams | rename outputd as "RunParams" | table "RunParams"</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.configuration.tags{} | rename outputd as "Tags" | table "Tags"</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Capabilities</title>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.configuration.allCapabilities.caps | rename outputd as "Capabilities" | table "Capabilities"</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Step Details</title>
+      <table>
+        <search>
+          <query>index=bofa_automation Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | rename "Primary.tests.EditNickname.Steps{}.step" as Step,"Primary.tests.EditNickname.Steps{}.stepDescription" as StepDescription, "Primary.tests.EditNickname.Steps{}.stepStatus" as "Step Status", "Primary.tests.EditNickname.Steps{}.stepTimer" as "Duration" | table  Step, StepDescription, "Step Status", Duration </query>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="number" field="Step Status"></format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Troubleshooting and Builds</title>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.environment.jenkins.jenkinsBuildUrl | strcat outputd "consoleText" JenkinsConsoleText | table JenkinsConsoleText</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>StackTrace</title>
+      <table>
+        <search>
+          <query>index="bofa_automation" Primary.testResults.testStatus="$status$" Primary.testResults.performanceStatus="$perfstatus$" Primary.configuration.allCapabilities.caps.desired.platformName="$platform$" Primary.configuration.allCapabilities.caps.platformVersion="$platformversion$" Primary.configuration.methodName="$monitor$" Primary.environment.model="$device$" Primary.timeValues.testExecutionStart="$executionStartTime$" | spath output=outputd path=Primary.testResults.stackTrace | rename outputd as "StrackTrace" | table "StrackTrace"</query>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>
