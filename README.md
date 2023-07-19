@@ -1,20 +1,24 @@
 <h1>Splunk Connector Library</h1>
 
-This project contains components licensed under the Apache 2.0 license agreement therefore this project is also licensed under the same read the LICENSE file or read here for the most up to date agreement: https://www.apache.org/licenses/LICENSE-2.0
+This project contains components licensed under the Apache 2.0 license agreement therefore this project is also licensed under the same license.  Please read the LICENSE file within this project or read here for the most up to date agreement: https://www.apache.org/licenses/LICENSE-2.0 .  You must accept the terms before utilizing this project
 
-<h1>Main Project / Splunk Connector Library</h1>
-The buildable and consumable portion of this project can be found under the project folder.  
+<h1>Project Overview</h1>
+The buildable and consumable portion of this project can be found under the project folder.
 
-This is a Java (currently built on Java Version 1.8) Maven project built utilizing Java Core and the Maven central repository (targeted versions in the pom may vary) jars of the following projects: 
+<h1>Dependencies</h1>
+This is a Java (1.8) Maven project utilizing 
+
+Java Core 1.8
+
+Maven
 
 GSON 
 https://github.com/google/gson
 https://mvnrepository.com/artifact/com.google.code.gson/gson
+
 Jackson FasterXML 
 https://github.com/FasterXML
 https://mvnrepository.com/artifact/com.fasterxml.jackson.core)
-
-<h1>Project Overview</h1>
 
 <h1>Examples of Integration</h1>
 
