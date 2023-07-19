@@ -14,9 +14,31 @@ You will find all the details here on how to configure Splunk.  You will need to
 
 <h4>data-source</h4>
 
-![Uploading splunk2.png…]()
-![Uploading splunk1.png…]()
-![splunk6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/55006e82-4062-476e-ba2b-01f18341bf36)
-![Uploading splunk5.png…]()
-![Uploading splunk4.png…]()
-![Uploading splunk3.png…]()
+hhjkjh
+![splunk1](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/836b2621-60e6-499d-a4da-813341ec3c5f)
+
+
+dghdgh
+![splunk2](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/8401af7e-ecc6-46b8-ba12-4ecdeeb2424f)
+
+
+dfhdgh
+![splunk3](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/897422f4-bd9d-44b5-ba3a-cfc4fa278637)
+
+
+dfgdfg
+![splunk4](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/60219556-05c5-42b9-b62b-5bde686e0588)
+
+
+dfgfdg
+![splunk5](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/42be5c61-e72f-41b0-a861-a0cc4a7836a1)
+
+
+
+fghfgh
+![splunk6](https://github.com/undertow1984/SplunkAutomationFrameworkIntegration/assets/12835715/be0c0be1-51cb-4aba-877a-157945a78efb)
+
+
+
+fghfgh
+dfgfdgdg
